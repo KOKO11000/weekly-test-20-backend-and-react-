@@ -1,18 +1,11 @@
 import express from "express";
-import { readJsonFiles } from "../services/fsFunc.js";
+
+import { gegMoviesData } from "../ctrls/controllers.js";
 
 const router = express.Router();
 
-const PATH_DATA = "data/movies.json";
 
-router.get("/api/movies", async (_, res) => {
-  try {
-    const readData = await readJsonFiles(PATH_DATA);
-    res.json(readData);
-  } catch (error) {
-    res.status(500);
-    console.error(error);
-  }
-});
+router.get("/api/movies", gegMoviesData);
 
 export default router;
+
